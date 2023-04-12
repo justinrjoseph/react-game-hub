@@ -3,16 +3,7 @@ import { useEffect, useState } from 'react';
 import { AxiosError, CanceledError } from 'axios';
 
 import apiClient from '../services/api-client';
-
-interface Game {
-  id: number;
-  name: string;
-}
-
-interface GamesRes {
-  count: number;
-  results: Game[];
-}
+import { Game, GamesRes } from '../models/game';
 
 function useGames(): { games: Game[]; error: string } {
   const [games, setGames] = useState<Game[]>([]);
