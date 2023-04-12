@@ -14,7 +14,7 @@ interface GamesRes {
   results: Game[];
 }
 
-function useGames() {
+function useGames(): { games: Game[]; error: string } {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState('');
 

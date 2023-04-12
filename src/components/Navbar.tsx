@@ -4,7 +4,7 @@ import logo from '../assets/logo.webp';
 
 import ColorModeSwitch from './ColorModeSwitch';
 
-function Navbar () {
+function Navbar(): JSX.Element {
   return (
     <HStack justifyContent="space-between" paddingRight="1rem">
       <Image src={logo} boxSize='5rem' />

@@ -3,7 +3,7 @@ import { Grid, GridItem, Show } from '@chakra-ui/react';
 import GameGrid from './components/GameGrid';
 import Navbar from './components/Navbar';
 
-function App() {
+function App(): JSX.Element {
   return (
     <Grid templateAreas={{
       base: `'nav' 'main'`,
