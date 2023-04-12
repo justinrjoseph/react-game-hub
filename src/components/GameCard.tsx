@@ -12,7 +12,7 @@ interface Props {
 
 function GameCard({ game }: Props): JSX.Element {
   return (
-    <Card borderRadius={10} overflow="hidden">
+    <Card inlineSize="18.75rem" borderRadius={10} overflow="hidden">
       <Image src={getCroppedImageUrl(game.background_image)} />
 
       <CardBody>
