@@ -15,7 +15,6 @@ function App(): JSX.Element {
         base: '1fr',
         lg: '12.5rem 1fr'
       }}
-      paddingTop=".5rem"
       paddingX="2rem">
       <GridItem area="nav">
         <Navbar />
