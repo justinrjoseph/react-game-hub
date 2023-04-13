@@ -1,36 +1,9 @@
-import { useEffect, useState } from 'react';
+import { Genre } from '../models/genre';
 
-import { AxiosError, CanceledError } from 'axios';
+import useData from './useData';
 
-import apiClient from '../services/api-client';
-import { Genre, GenreRes } from '../models/genre';
-
-function useGenres() {
-  const [loading, setLoading] = useState(false);
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    setLoading(true);
-
-    apiClient.get<GenreRes>('/genres', { signal: controller.signal })
-      .then(({ data: { results } }) => {
-        setGenres(results);
-        setLoading(false);
-      })
-      .catch((err: AxiosError) => {
-        if (err instanceof CanceledError) return;
-
-        setError(err.message);
-        setLoading(false);
-      });
-
-    return () => controller.abort();
-  }, []);
-
-  return { loading, genres, error };
+function useGenres(): { loading: boolean; data: Genre[]; error: string } {
+  return useData<Genre>('/genres');
 }
 
 export default useGenres;
