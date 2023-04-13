@@ -6,10 +6,17 @@ import Navbar from './components/Navbar';
 
 function App(): JSX.Element {
   return (
-    <Grid templateAreas={{
-      base: `'nav' 'main'`,
-      lg: `'nav nav' 'aside main'`
-    }}>
+    <Grid 
+      templateAreas={{
+        base: `'nav' 'main'`,
+        lg: `'nav nav' 'aside main'`
+      }}
+      templateColumns={{
+        base: '1fr',
+        lg: '12.5rem 1fr'
+      }}
+      paddingTop=".5rem"
+      paddingX="2rem">
       <GridItem area="nav">
         <Navbar />
       </GridItem>

@@ -6,8 +6,8 @@ import ColorModeSwitch from './ColorModeSwitch';
 
 function Navbar(): JSX.Element {
   return (
-    <HStack justifyContent="space-between" paddingRight="1rem">
-      <Image src={logo} boxSize='5rem' />
+    <HStack justifyContent="space-between">
+      <Image src={logo} boxSize="5rem" />
       <ColorModeSwitch />
     </HStack>
   );

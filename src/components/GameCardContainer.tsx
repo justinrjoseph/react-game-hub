@@ -8,7 +8,7 @@ interface Props {
 
 function GameCardContainer({ children }: Props): JSX.Element {
   return (
-    <Box inlineSize="18.75rem" borderRadius={10} overflow="hidden">
+    <Box borderRadius={10} overflow="hidden">
       {children}
     </Box>
   );
