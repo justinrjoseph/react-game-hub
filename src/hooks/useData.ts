@@ -8,7 +8,7 @@ import apiClient from '../services/api-client';
 function useData<T>(url: string, reqConfig?: AxiosRequestConfig, deps?: any[]): {
   loading: boolean;
   data: T[];
-  error: string
+  error: string;
 } {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<T[]>([]);

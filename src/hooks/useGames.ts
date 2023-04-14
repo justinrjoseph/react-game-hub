@@ -6,7 +6,7 @@ import useData from './useData';
 function useGames(selectedGenre: Genre | null): {
   loading: boolean;
   data: Game[];
-  error: string
+  error: string;
 } {
   return useData<Game>('/games', {
     params: { genres: selectedGenre?.id },
