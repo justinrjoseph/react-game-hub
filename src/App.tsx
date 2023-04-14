@@ -27,7 +27,8 @@ function App(): JSX.Element {
 
       <Show above="lg">
         <GridItem area="aside">
-          <GenreList onSelectGenre={setSelectedGenre} />
+          <GenreList onSelectGenre={setSelectedGenre}
+            selectedGenre={selectedGenre} />
         </GridItem>
       </Show>
 
