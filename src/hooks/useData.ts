@@ -24,7 +24,6 @@ function useData<T>(url: string, reqConfig?: AxiosRequestConfig, deps?: any[]): 
         ...reqConfig
       })
       .then(({ data: { results } }) => {
-        console.log('results', results);
         setData(results);
         setLoading(false);
       })
