@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import { AxiosError, CanceledError } from 'axios';
+import { AxiosError, AxiosRequestConfig, CanceledError } from 'axios';
 
 import { DataRes } from '../models/data';
 import apiClient from '../services/api-client';
 
-function useData<T>(url: string): { loading: boolean; data: T[]; error: string } {
+function useData<T>(url: string, reqConfig?: AxiosRequestConfig, deps?: any[]): {
+  loading: boolean;
+  data: T[];
+  error: string
+} {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState('');
@@ -15,8 +19,12 @@ function useData<T>(url: string): { loading: boolean; data: T[]; error: string }
 
     setLoading(true);
 
-    apiClient.get<DataRes<T>>(url, { signal: controller.signal })
+    apiClient.get<DataRes<T>>(url, {
+        signal: controller.signal,
+        ...reqConfig
+      })
       .then(({ data: { results } }) => {
+        console.log('results', results);
         setData(results);
         setLoading(false);
       })
@@ -28,7 +36,7 @@ function useData<T>(url: string): { loading: boolean; data: T[]; error: string }
       });
 
     return () => controller.abort();
-  }, []);
+  }, deps || []);
 
   return { loading, data, error };
 }
