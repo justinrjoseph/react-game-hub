@@ -4,6 +4,7 @@ import { Flex, Grid, GridItem, Show } from '@chakra-ui/react';
 
 import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
+import ResultsHeading from './components/ResultsHeading';
 import Navbar from './components/Navbar';
 import PlatformSelector from './components/PlatformSelector';
 import SortSelector from './components/SortSelector';
@@ -39,7 +40,8 @@ function App(): JSX.Element {
       </Show>
 
       <GridItem area="main">
-        <Flex marginBlockEnd={5}>
+        <ResultsHeading gameQuery={gameQuery} />
+        <Flex marginBlockEnd="1.25rem">
           <PlatformSelector onSelectPlatform={(platform) => {
               setGameQuery({ ...gameQuery, platform });
             }}
