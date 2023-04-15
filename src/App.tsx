@@ -42,7 +42,10 @@ function App(): JSX.Element {
               setGameQuery({ ...gameQuery, platform });
             }}
             selectedPlatform={gameQuery.platform} />
-          <SortSelector />
+          <SortSelector onSort={(sortCategory) => {
+            setGameQuery({ ...gameQuery, sortCategory })
+            }}
+            selectedCategory={gameQuery.sortCategory} />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>

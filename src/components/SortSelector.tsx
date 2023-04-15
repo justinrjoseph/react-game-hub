@@ -1,23 +1,45 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { Box, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
 
-function SortSelector(): JSX.Element {
-  return (
-    <Menu>
-      <MenuButton as={Button}
-        rightIcon={<BsChevronDown />}>
-        Order by: Relevance
-      </MenuButton>
+import { SortCategory } from '../models/sort-category';
 
-      <MenuList>
-        <MenuItem>Relevance</MenuItem>
-        <MenuItem>Date added</MenuItem>
-        <MenuItem>Name</MenuItem>
-        <MenuItem>Release date</MenuItem>
-        <MenuItem>Popularity</MenuItem>
-        <MenuItem>Average rating</MenuItem>
-      </MenuList>
-    </Menu>
+const sortCategories: { label: string; value: string }[] = [
+  { label: 'Relevance', value: '' },
+  { label: 'Date added', value: '-added' },
+  { label: 'Name', value: 'name' },
+  { label: 'Release date', value: '-released' },
+  { label: 'Popularity', value: '-metacritic' },
+  { label: 'Average rating', value: '-rating' }
+];
+
+interface Props {
+  onSort: (category: string) => void;
+  selectedCategory: string;
+}
+
+function SortSelector({ onSort, selectedCategory }: Props): JSX.Element {
+  const sortCategory = sortCategories.find((sortCategory) => {
+    return sortCategory.value === selectedCategory;
+  });
+
+  return (
+    <Box>
+      <Menu>
+        <MenuButton as={Button}
+          rightIcon={<BsChevronDown />}>
+          Order by: {sortCategory?.label || 'Relevance'}
+        </MenuButton>
+
+        <MenuList>
+          {sortCategories.map((sortCategory) => {
+            return <MenuItem key={sortCategory.value}
+              onClick={() => onSort(sortCategory.value)}>
+              {sortCategory.label}
+            </MenuItem>;
+          })}
+        </MenuList>
+      </Menu>
+    </Box>
   );
 }
 
