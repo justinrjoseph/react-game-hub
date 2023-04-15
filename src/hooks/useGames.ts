@@ -10,6 +10,7 @@ function useGames(gameQuery: GameQuery): {
 } {
   return useData<Game>('/games', {
     params: {
+      search: gameQuery.search,
       genres: gameQuery.genre?.id,
       parent_platforms: gameQuery.platform?.id,
       ordering: gameQuery.sortCategory

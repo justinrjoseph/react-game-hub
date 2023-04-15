@@ -24,7 +24,9 @@ function App(): JSX.Element {
       }}
       paddingX="2rem">
       <GridItem area="nav">
-        <Navbar />
+        <Navbar onSearch={(search) => {
+          setGameQuery({ ...gameQuery, search });
+        }} />
       </GridItem>
 
       <Show above="lg">
