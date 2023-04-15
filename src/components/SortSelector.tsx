@@ -1,7 +1,5 @@
-import { Box, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { BsChevronDown } from 'react-icons/bs';
-
-import { SortCategory } from '../models/sort-category';
 
 const sortCategories: { label: string; value: string }[] = [
   { label: 'Relevance', value: '' },
@@ -23,23 +21,21 @@ function SortSelector({ onSort, selectedCategory }: Props): JSX.Element {
   });
 
   return (
-    <Box>
-      <Menu>
-        <MenuButton as={Button}
-          rightIcon={<BsChevronDown />}>
-          Order by: {sortCategory?.label || 'Relevance'}
-        </MenuButton>
+    <Menu>
+      <MenuButton as={Button}
+        rightIcon={<BsChevronDown />}>
+        Order by: {sortCategory?.label || 'Relevance'}
+      </MenuButton>
 
-        <MenuList>
-          {sortCategories.map((sortCategory) => {
-            return <MenuItem key={sortCategory.value}
-              onClick={() => onSort(sortCategory.value)}>
-              {sortCategory.label}
-            </MenuItem>;
-          })}
-        </MenuList>
-      </Menu>
-    </Box>
+      <MenuList>
+        {sortCategories.map((sortCategory) => {
+          return <MenuItem key={sortCategory.value}
+            onClick={() => onSort(sortCategory.value)}>
+            {sortCategory.label}
+          </MenuItem>;
+        })}
+      </MenuList>
+    </Menu>
   );
 }
 
