@@ -14,7 +14,7 @@ import { SiNintendo } from 'react-icons/si';
 
 import { Platform } from '../models/platform';
 
-const iconMap: { [key: string]: IconType } = {
+const icons: { [key: string]: IconType } = {
   pc: FaWindows,
   playstation: FaPlaystation,
   xbox: FaXbox,
@@ -35,7 +35,7 @@ function PlatformIconList({ platforms }: Props): JSX.Element {
     <HStack marginY={'.25rem'}>
       {platforms.map((platform) => {
         return <Icon key={platform.id}
-          as={iconMap[platform.slug]}
+          as={icons[platform.slug]}
           color="gray.500" />
       })}
     </HStack>
