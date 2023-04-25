@@ -10,7 +10,7 @@ interface Props {
 }
 
 function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props): JSX.Element | null {
-  const { data: platforms, error } = usePlatforms(null);
+  const { data: platforms, error } = usePlatforms();
 
   if (error) return null;
 
